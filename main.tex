@@ -1,0 +1,792 @@
+\documentclass[a4paper,oneside,12 pt]{book}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{color}
+\usepackage{graphicx}
+\newcommand{\ndiv}{\hspace{-4pt}\not|\hspace{2pt}}
+
+\DeclareMathOperator{\lcm}{LCM}
+\DeclareMathOperator{\ord}{ord}
+\theoremstyle{definition}
+\newtheorem{exmp}{Example}[section]
+
+\theoremstyle{definition}
+\newtheorem{prbm}{Problem}[section]
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+
+\newtheorem{theorem}{Theorem} [section]
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+
+
+
+\definecolor{title}{RGB}{180,0,0}
+\definecolor{other}{RGB}{171,0,255}
+\definecolor{name}{RGB}{255,0,0}
+\definecolor{phd}{RGB}{0,0,240}
+
+
+\begin{document}
+
+\frontmatter
+\title{\bfseries {\textcolor{title}{Number Theory for \\ Beginners}}}
+\author{\textcolor{other}{......}} 
+\date{}
+\maketitle
+
+%*************************************************************************************
+% Index of topics
+%*******************************************************************************
+\tableofcontents 
+
+
+\chapter{Preface}
+
+
+\chapter{Abstract}
+\chapter{Introduction}
+
+
+\mainmatter
+
+
+\chapter{Divisibility }
+\section{Introduction}
+When do a number divides another number? Is the given expression divisible by $n$ or not? Perhaps we've been learning of the number is divisible by another or not till now, but now we deal with the general cases! For example: we know $x^3-1$ is divisible by $x-1$ and $x^2+x+1$, where $x$ is any arbitrary integer, this is the general case of saying that $511=8^3-1$ is divisible by $73=8^2+8+1$. \textbf{If $a$ is divisible by $b$ then we denote that $b|a$.} (What happens if $a|b$ and $b|a$ at the same time?)\\
+\rule{\textwidth}{1pt}
+
+\begin{theorem}[\textbf{Division Algorithm}] 
+Let $a,n$ be two integers, with $n\neq 0$, $0\leq r<|b|$. Then we can find unique integers $q$ and $r$ such that $a=nq+r$. \\
+\textsf{For $19,4$, we have, $19=4*4+3$, so $q=4,r=3.$}
+\end{theorem}
+
+\begin{theorem} [\textit{The Fundamental Theorem of Arithmetic}]
+
+Every integer greater than $1$ can be written uniquely in the form of $${p_1}^{e_1}.{p_2}^{e_2}.\cdots {p_n}^{e_n}$$ where $p_j$ are distinct primes and $e_i$ are positive integers.\\
+\textsf{The prime factorization of 3,8,18 is: $3=3^1, 8=2^3, 18=2^1*3^2$. }
+
+\end{theorem}
+
+\begin{theorem} [Division]
+Let, $n$ be any integer such that $n|a, n|b$ for any integers $a,b$, then $n|a-b$ and $n|a+b$.
+\begin{proof}
+From theorem 1.1.1,we have that 
+$$a=nq_1, b=nq_2$$
+such that $q_1,q_2$ are quotients for $a,b$ resp.
+So, $a-b=n(q_1-q_2) \implies n|a-b$.
+
+\end{proof}
+\textsc{Exercise: prove $n|a+b$.}
+\end{theorem}
+ 
+
+\rule{\textwidth}{2pt}
+\section{Examples}
+\begin{exmp}
+ If $x$ is the power of $2$ then prove that $x^3-1$ is always divisible by $7$.
+\begin{proof}[Solution]
+Let's try with the minimal case when $x=2$, then obviously $7|7$. So, think if we can make the expression as multiple of $7$.
+But, if you're done trying it then try factoring it. $x^3-1=(x-1)(x^2+x+1)$.
+ Okay, now put $x=2^k$! \\
+Just notice that $(2^k)^3-1=(2^3)^k-1$
+ Furthermore, $$(2^3)^k-1=(2^3-1)[(2^3)^{k-1}+......+1]$$
+$$x^3-1=7.[(2^3)^{k-1}+......+1]$$
+So, $x^3-1$ is always divisible by 7 whenever $x=2^k$.
+\end{proof}
+\end{exmp}
+
+\begin{exmp}
+Find all $k \in \mathbb{Z}$ such that $k-1|k^2+1$.
+\begin{proof} [Solution]
+Just see that the question is related with the theorem 1.1.2 stated above, just stop right here and try finding answer yourself.
+Using theorem $1.1.2$,
+$$k-1|k^2+1-k^2+k \implies k-1|k+1-k+1 \implies k-1|2$$
+So, $k-1=\{-2,-1,1,2\} \implies k=\{-1,0,2,3\}$.
+And we are done.
+\end{proof}
+\end{exmp}
+
+\begin{exmp} 
+Find all conditions of $n$ for $a_n=2^n-1$ to be prime.
+\textbf{Answer:} If only $n$ is a prime.
+\begin{proof}[Solution]
+For the sake of contradiction assume that $n$ is not a prime then, we have,
+$$n=m.k \implies a_n=2^{m.k}-1 \implies a_n=(2^m)^k-1 \implies a_n=(2^m-1)(2^{m(k-1)}+2^{m(k-2)}+\cdots+1$$
+Since, $a_n$ can be factored, it can't be prime since $m,k \geq 2$.Contradiction.
+Hence, $n$ must be prime for $a_n$ to be prime.
+\end{proof}
+\end{exmp} 
+
+\begin{exmp} 
+Prove that $n=2^k$ for $a_n=2^n+1$ to be prime.
+\begin{proof} [Hint]
+Just see if you can factorize the expression and then proceed by contradiction.
+\end{proof}
+
+\end{exmp} 
+
+\begin{exmp} 
+\begin{proof} [Solution]
+
+\end{proof}
+\end{exmp} 
+
+
+\chapter{GCD and LCM}
+\section{Introduction}
+GCD(Greatest Common Divisor)is an analogy of HCF(Highest Common Factor), and LCM is termed as lowest common multiple. The gcd of two numbers $a,b$ is denoted by $gcd(a,b)$ and that for LCM is $LCM(a,b)$. The gcd of $a$ and $b$ is the largest number that divides both $a$ and $b$. The gcd of two relatively prime integers is $1$. Also, keep in mind that the $gcd$ and $LCM$ are only defined for integers.
+\subsection{Operation on GCD and LCM}
+\begin{itemize}
+\item For all $a,b$, $LCM(a,b).gcd(a,b)=a.b$.
+\item If $a|kb$ and $gcd(a,k)=1$ then $a|b$.
+\item Any two consecutive numbers are relatively prime.
+\item $1$ is relatively prime to all integers.
+\item If $gcd(a,b)=d$, then there exists integer solutions $(x,y)$ for the linear equation $ax+by=k.d$.
+\end{itemize}
+
+\paragraph{Euclidean Algorithm}
+Euclidean Algorithm an efficient method for computing the greatest common divisor (GCD) of two numbers. It is an algorithm, where the operation of addition, subtraction and multiplication is allowed. For example, $gcd(a,b)=gcd(a,b-ka)=gcd(a-kb,b)$. It is simple and effective. Again, $gcd(981,90)=gcd(981-90*10,90)=gcd(81,90)=gcd(9,90)=9$.
+Easy right! Let's see it's application in Olympiad problems.
+
+
+\section{Examples}
+\begin{exmp} [Example(IMO 1959)]
+Prove that the fraction $ \dfrac{21n + 4}{14n + 3}$ is irreducible for every natural number $ n$.
+\begin{proof}
+Using Euclidean algorithm,
+$$\gcd(21n+4,14n+3)=\gcd(14n+3, 7n+1)=\gcd(7n+1,1)=1$$
+
+\end{proof}
+\end{exmp}
+
+\begin{exmp}
+Find general integer solution to the equation $3x+4y=1$.
+\begin{proof}
+We have that, $4=3*1+1 $
+\end{proof}
+\end{exmp}
+
+\chapter{Modular Arithmetic}
+\section{Introduction}
+Basically, in this chapter we are dealing with the remainders when a number is divided by another, i.e. when $"n"$ divides $a$ with quotient $q$ and remainder $r$ then we represent $a=nq+r$, in modular form we represent it as $a \equiv r \pmod{n}$, read as $a$ is equivalent to $r$ modulo $n$, where $r$ is residue.
+\rule{\textwidth}{1pt}
+
+\subsection{Operation on Modulo}
+Assume that $a \equiv b \pmod{m}$, then we can have the following operations:
+\begin{itemize}
+\item $a \equiv b \pmod{m} \implies a-b \equiv 0 \pmod{m}$. This implies that $p|(a-b)$ but $p \not |a,b$.
+ 
+\item If $k$ is relatively prime to $m$ then $a \equiv b \pmod{m} \implies ak \equiv bk \pmod{m}$.
+
+\item $a \equiv b \pmod{m} \implies a^n \equiv b^n \pmod{m}$. So, generally in the context of such problems we reduce the condition to $a^k \equiv 1 \pmod{m}$ for easier calculation. For example:\\
+Find $11^{64}\pmod{8}$.\\
+Then, just consider $11^2 \equiv 1 \pmod{8}$.
+Then, we can easily see that, $(11^2)^{32} \equiv 1^{32} \pmod{8} \implies 11^{64} \equiv 1 \pmod{8}$. See, that's easy.
+\item $p \equiv -2 \pmod{m} \implies m|p+2$,where $-2$ is the modulo inverse of $p$. For example, $23 \equiv 3 \pmod{4} \implies 23 \equiv -1 \pmod{4} $.
+
+\item Last, but not the least,remember that $a-b \equiv km \pmod {m}$. Generally, $k|0, \forall k \in \mathbb{Z^*}$.
+\end{itemize}
+
+
+
+\section{Warm-Up Problems}
+
+\begin{enumerate}
+\item Find residue when $23^2$ is divided by $4$.
+(\textbf{If you are quite familiar with it, then find residues $x^2 \pmod{4}$})
+\item Find the residue $45^6 \pmod{100}$.
+\item Find the residue $x^3\pmod 9$.
+\item Find the residue class of $x^2\pmod{13}$.
+\item Find the last two digits of $44^{44}$.
+\item Prove that there are no integers solution to the equation $8x^2+y^2=42$.
+
+\begin{defn}
+Residue class refers to the possible residues when a class of numbers represented by same general formula is divided by some integer. For example: The residue class for $x^2\pmod{4}$ is $\{0,1\}$. And, the modulo follows cyclic recurring pattern(whose proof is not elementary), but it's not a big deal for specific integers. Okay, take any square of an integer then divide it by $4$ then the only possible remainder is $0,1$. But, how? Just see that every numbers can be represented in the form of $2k$ i.e even and $2k+1$, i.e. odd. So, square them, and we get $(2k)^2=4k^2$ and $(2k+1)^2=4k^2+4k+1, \forall k \in \mathbb{Z}$. And, see that the residues are $\{0,1\}$.
+\end{defn}
+\end{enumerate}
+
+\section{Prime Numbers}
+\subsection{Introduction}
+Prime numbers are those numbers which are divisible by $1$ and itself. For example: $1,2|2,1,5|5$. Well, we know pretty much about the primes, right? Maybe! However, we may not be familiar with the importance of prime numbers in Number Theory. But, this pretty little thing is the core of number theory as it is a tool to solve most of the problems.
+Let's when does a particular prime divides specific numbers. In other words, let's call it the divisibility condition of primes:
+
+
+\begin{enumerate}
+
+\item{A number is divisible by $2$ if it has even end digit. (Note that we are also considering $0$ as even.)}
+\item{A number is divisible by $3$ iff the sum of each digit is divisible by 3. Okay! From quick inspection we can tell that $4465782$ is divisible by $3$ since $36$ is divisible by $3$. Easy right? }
+                    \textbf{Okay, find out when $2^t+1$ is divisible by $3$.}
+\item{A number is divisible by $5$ iff if it ends with digit $5$ or $0$.}
+\item{A number is divisible by $7$ whenever subtracting 2 times the last digit from the rest gives a multiple of 7.}
+\item{A number is divisible by $9$ if the sum of the digits is divisible by $9$}
+\end{enumerate}
+\rule{\textwidth}{1pt}
+
+
+\section{Theorems and Corollaries}
+
+\begin{theorem}
+If $p \equiv q \pmod{m}$ and $k \equiv l \pmod{m}$ then $p+k \equiv q+l \pmod{m}$, and $pk \equiv ql \pmod{m}$. \\
+\textsf{For example: $8 \equiv 3 \pmod{5}, 14 \equiv 4 \pmod{5}$, then we have, $8+14 \equiv 3+4 \equiv 2 \pmod{5} $, and $8*14 \equiv 3*4 \equiv 2 \pmod{5}$.}
+\end{theorem}
+
+\begin{defn}
+
+
+
+-Let, $f$ be a polynomial with integer coefficients and $x\equiv y \pmod{m} $, then $f(x) \equiv f(y) \pmod{m}.$This is equivalent to the result that $a-b|f(a)-f(b)$.\\
+\textsf{Let, $f(x)=x^2+5x+2$, then $4 \equiv 1 \pmod{3}$, then $f(4)=38,f(1)=8$, now we can easily see that $38 \equiv 2 \pmod{3}$. Also, $8 \equiv 2 \pmod{3} \implies 38 \equiv 8 \pmod{3}$.}
+
+\end{defn}
+
+
+\begin{theorem} [Euler's Theorem]
+If $a$ is relatively prime to $m$, then $a^{\phi(m)} \equiv 1 \pmod{m}$, where $\phi{(m)}$ denotes the no. of co-prime integers less than $m$ and is given by
+$$\phi(m)=m\bigg(1-\frac{1}{p_1}\bigg).\bigg(1-\frac{1}{p_2}\bigg)\cdots \bigg(1-\frac{1}{p_n}\bigg)$$
+such that $m={p_1}^{e_1}...{p_n}^{e_n}$.\\
+\textsf{We have, $\phi{(8)}=8*\frac{1}{2}=4$, then we must have, $3^{\phi{(8)}} \equiv 1 \pmod{8}$, then we can see that, $3^4=81 \equiv 1 \pmod{8}.$}
+
+\end{theorem}
+
+\begin{theorem} [Fermat's Little Theorem]
+Let, $p$ be a prime such that $p \not | a$(doesn't divide), then we have,
+$$a^{p-1} \equiv 1 \pmod{p}$$
+\textsf{But, remember the converse is not true.Such number are are called Fermat-pseudo primes. You may also want to search \textbf{Carmichael numbers.Also, remember that it is the special case of Euler's Theorem since the number of co-prime integers smaller than $p$ is clearly $p-1$.}}
+
+\end{theorem}
+
+\begin{theorem}
+If $p$ is a prime and $n \in \mathbb{Z^+}$, such that $p|(4n^2+1)$ then $p \equiv 1 \pmod{4}$.Similarly,if $p|n^2+1$, then $p\equiv 1,2 \pmod{4}$.\\
+\textsf{For $n=6$, then $5,29|145$, then $5,29 \equiv 1 \pmod{4}$.Similarly, for $n=5$, $2,13|26$, then we clearly have, $2 \equiv 2 \pmod{4}, 13 \equiv 1\pmod{4}$.}
+\end{theorem}
+
+\begin{theorem} [Wilson's Theorem]
+If $p$ is a prime, then 
+$$(p-1)! \equiv -1 \pmod{p}$$
+\end{theorem}
+
+\begin{theorem}
+Let, $p=4k+1$ be prime then it can be expressed as a sum of two squares, i.e. $p=a^2+b^2$.
+\textsf{For $k=4, p=17$, and then we can easily see that, $17=4^2+1^2$.}
+\end{theorem}
+
+\begin{theorem} [Chinese Remainder Theorem]
+If the $n_i$ are pairwise co-prime, and if $a_1, ..., a_k$ are any integers, then there exists an integer $x$ such that
+
+$$x \equiv a_{1}\pmod {n_{1}}$$
+\center{$${\vdots}$$}
+$$x \equiv a_{k}\pmod {n_{k}}$$
+
+and any two such $x$ are congruent modulo $N$, where $N=n_1.n_2....n_k$.
+\textsf{•}
+\end{theorem}
+
+
+
+
+
+\newpage
+\section{Examples}
+
+\begin{exmp}
+If $x$ is the power of $2$ then prove that $x^3-1$ is always divisible by $7$.
+\begin{proof}[Solution]
+This is the same question we did in Divisibility chapter, now let's see how fast it can be done by modular operations,
+We have, the residue class of $7=\{0,1,6\}$,(check this),then
+$$(2^3)^k-1=8^k-1 \equiv 1-1 \pmod{7} \implies 8^k-1 \equiv 0 \pmod{7} \implies 7|(8^k-1)$$
+And, we are done.
+\end{proof}
+\end{exmp}
+
+\begin{exmp}
+\begin{proof}[Solution]
+
+\end{proof}
+\end{exmp}
+
+
+
+
+\begin{exmp}
+\begin{proof}[Solution]
+
+\end{proof}
+\end{exmp}
+
+
+
+
+\begin{exmp}
+\begin{proof}[Solution]
+
+\end{proof}
+\end{exmp}
+
+
+
+
+\begin{exmp}
+\begin{proof}[Solution]
+
+\end{proof}
+\end{exmp}
+
+
+\begin{exmp}
+\begin{proof}[Solution]
+
+\end{proof}
+\end{exmp}
+
+\begin{exmp}
+\begin{proof}[Solution]
+
+\end{proof}
+\end{exmp}
+
+
+
+\chapter{Practice Questions}
+
+In this chapter I am going to provide some questions of different mathematical Olympiads along with their solutions. And, some problems have hints embedded by number, you can find the corresponding hint to the number mentioned after the question.
+
+\section{Problems with Solution}
+\begin{prbm}
+ Prove that if $n$ is a positive integer such that the equation \[ x^3-3xy^2+y^3=n \] has a solution in integers $x,y$, then it has at least three such solutions. Show that the equation has no solutions in integers for $n=2891$.(A harder example)
+\begin{proof} [Solution]
+WLOG, Assume that $x=y+m$,
+Then we have,
+$$(y+m)^3-3y^2(y+m)+y^3=n$$$$m^3-3y^2m+(-y)^3=n$$
+So, we see that if $(x,y)$ is solution then $(-y,x-y)$ is also a solution.\\
+Similarly, letting $y=x+k$ gives.
+
+$$k^3-3x^2k+(-x)^3=n$$
+So, $(-x,y-x)$ is also a solution.\\
+Claim 1: All the solution pairs are distinct.\\
+assume to the contrary that $(x,y)=(-y,x-y)\implies y=-2y \implies x=y=0$.\\
+Contradiction since $n$ is a positive integer.\\
+This proves our claim.So, we must have three different solution.\\
+Suppose for the sake of contradiction there exists a solution pair $(x,y)$ in integers for equation:
+
+$$x^3-3xy^2+y^3=2891$$
+
+We have, $x^3 \equiv 0,1,8 \pmod{9}$\footnote{ In the case of cubes check $\pmod{7} $ or $\pmod{9}$ for relevant results}
+Now we work on the basis of: $2891 \equiv 2 \pmod{9}$.\\
+Case I: $x,y$ are multiple of $3$.
+$$x^3-3xy^2+y^3 \equiv 0 \pmod{9}$$
+Contradiction.\\
+Case II: $x$ or $y$ is multiple of $3$.
+
+$$\implies x^3-3xy^2+y^3 \equiv 0 \pmod{9}$$
+
+Contradiction.\\
+Case III: $x,y$ are integers not multiple of 3.
+ 
+$$\implies x^3-3xy^2+y^3 \equiv 3,6 \pmod {9}$$
+
+Contradiction.
+So, there are no solutions when $n=2891$. And, we are done.
+\end{proof}
+\end{prbm}
+\rule{\textwidth}{1pt}
+\begin{prbm}
+If $a$ and $b$ are co-prime positive integers and $n$ an integer, prove that the greatest common divisor of $a^2+b^2-nab$ and $a+b$ divides $n+2$.
+ \begin{proof}[Solution(Due to FT)]
+ We proceed to the proof by using Euclidean Algorithm,
+ $$gcd(a^2+b^2-nab,a+b)=gcd(a^2+b^2-nab-(a+b)^2,a+b)$$
+ $$=gcd(-nab-2ab,a+b)=gcd(ab(n+2),a+b)$$
+Then,
+$gcd(ab(n+2),a+b)=gcd(n+2,a+b)$, since $gcd(ab,a+b)=1$ since $a$ and $b$ are co-prime.
+Thus the desired greatest common divisor divides $n+2$.
+\end{proof}
+\end{prbm}
+
+\begin{prbm} 
+ Prove that:$\frac{1}{3}+\frac{1}{5}+\frac{1}{7}+...+\frac{1}{2k+1}$ is never an integer for all $n>0$.
+\begin{proof} [Solution(FT)]
+This is a very common result, here I prove it using Bertrand postulate, which is a theorem that assures that for any integer $a$, there is a prime $q$ between $a$ and $2a$.
+
+Take the biggest prime in ${3,5,...,2k+1}$. Call it $p$. Now combine all of the denominators of the expression like so:
+$$\frac{1}{3}+\frac{1}{5}+...+\frac{1}{2k+1}=\frac{ \frac{d}{3}+\frac{d}{5}+...+\frac{d}{2k+1}}{d}$$Where $d$ is the least common multiple of ${3,5,...,2k+1}$.
+Notice that the denominator of that fraction is divisible by $p$. However, the numerator cannot be; every term $\frac{d}{i}$ of that sum is divisible by $p$ other than the term $\frac{d}{p}$, so the numerator is a sum of a bunch terms, all of which are divisible by $p$ except for one, so it cannot possibly be divisible by $p$. Thus the fraction cannot be an integer.
+We know that only one term $\frac{d}{i}$ is not divisible by $p$ because, if two terms $i,j$ were divisible by $p$, then both $p,2p \in {3,5,...,2k+1}$, which is impossible, since there must be another prime between $p$ and $2p$, which contradicts the fact that $p$ is the largest prime in the set.
+\end{proof}
+\end{prbm} 
+
+
+\begin{prbm} 
+Let $n$ be a positive integer and let $p$ be a prime number. Prove that if $a$, $b$, $c$ are integers (not necessarily positive) satisfying the equations \[ a^n + pb = b^n + pc = c^n + pa\] then $a = b = c$.
+\begin{proof} [Solution]
+Suppose there exist non-equal $a,b,c$ that fulfill these conditions. Clearly if $a=b$, then $a=b=c$, so assume that they are all distinct.
+$a^n + pb = b^n + pc \implies a^n-b^n = p (c-b)$.
+Now, take $a^n-b^n = p (c-b)$ and its cyclic equivalents. Multiply them all together, and we have $(a^n-b^n)(b^n-c^n)(c^n-a^n)=p^3 (c-b)(a-c)(b-a)$.
+Now divide both sides by $(c-b)(a-c)(b-a)$.
+
+If we had $|\frac{a^n-b^n}{a-b}|=1$ for integers $a,b$, then $a^n - b^n = a-b$, which is impossible if  $a$ and $b$ are distinct. Thus,
+$$p=|\frac {a^n-b^n}{a-b}|=|\frac {b^n-c^n}{b-c}|=|\frac {c^n-a^n}{c-a}|$$This gets rid of p entirely. And, from here, it is easy to find a contradiction if they are all distinct, simply by taking the previous equality two at a time:
+$a^{n-1}+a^{n-2}b+...+ab^{n-2}+b^{n-1}=a^{n-1}+a^{n-2}c+...+ac^{n-2}+c^{n-1}$
+If $b,c>0$ or $b,c<0$, this implies $b=c \implies a=b=c$. And by pigeonhole we can choose two of $a,b,c$ that are both positive or both negative, make those $b,c$ in the above equality, and find all three are equal, which goes against our initial hypothesis that they are distinct.
+\end{proof}
+\end{prbm} 
+
+\begin{prbm}
+Let $n$ be a positive integer. Prove that if the no. of factors of $2$ in $n!$ is $n-1$, the $n$ is the power of two.
+
+\begin{proof} [Solution 1:]
+We have, No. of factors of prime $p$ is $\frac{n-S_p(n)}{p-1}$, where $S_p(n)$ denotes the sum of the digits of $n$ expressed in base $p$.
+Since, $p=2$,we have,
+$$n-1=n-S_p(n)\implies S_p(n)=1 \implies n_p=\underbrace{100...000}_k$$Then, we have,
+$$n_{10}=1*2^{k-1}+0*2^{k-2}+.....+0*2^0$$Hence, $\boxed{n=2^{k-1}}$, which is the required proof.
+\end{proof}
+\begin{proof}[Solution 2(FT)]
+The number of even numbers less than or equal to n is $[n/2]$ (floor function).
+Similarly, [n/4] is the number that are divisible by 4, $[n/8]$ the number divisible by 8, until $[n/{2^t}]$ where $2^t$ is the largest power of two less than or equal to n.
+Thus we have:
+$[n/2]+[n/4]+...+[n/{2^t}]=n-1$.
+Notice that this holds if n is a power of 2 as the left hand side becomes $2^{t-1}+...+2+1=2^t-1=n-1$
+If n is not a power of 2, in the sum $[n/2]+[n/4]+...+[n/{2^t}]$ value is lost inside of some of the floor functions (as they are not all integers), which means that the sum $[n/2]+[n/4]+...+[n/{2^t}]$ cannot reach its maximum value of $n-1$ (this is its maximum value because $n/2+n/4+...n/{2^t}<n(1/2+1/4+...)=n$ so $n/2+n/4+...+n/{2^t}<=n-1$ (if it is an integer) with equality only holding if each term in the floor functions is an integer.
+Thus n is a power of two.
+\end{proof}
+\end{prbm}
+
+\begin{prbm}
+Consider a square number $n$, if we remove the last two digits of the number then the resulting number is again a square. find all such $n$.
+\begin{proof}[Solution(Illogical)]
+Let $n=\overline{a_1\cdots a_k}=x^2,$ and $$\overline{a_1\cdots a_{k-2}}=y^2\implies \overline{a_1\cdots a_{k-2}00}=(10y)^2.$$ Then $(10y)^2<x^2\implies 10y+1\le x,$ and $\overline{a_{k-1}a_k}\le 99,$ so 
+$$(10y+1)^2\le100y^2+99\implies y\le \frac{49}{10}\implies y=1,2,3,4.$$
+$$y=1 \implies n=100,121,144,169,196$$
+$$y=2 \implies n=400,441,484$$
+$$y=3 \implies n=900,961$$
+$$y=4 \implies n=1600,1681$$
+Then $n=1681$ works, as well as any $100|n.$
+
+\end{proof}
+
+\end{prbm}
+
+\begin{prbm}
+Find all triples of positive integers to the equation
+$$m!+n!=LCM(m^k,n^k).$$
+\begin{proof} [Solution(FT)]
+We check $n=1$ and $n=2$ directly and find the solution $n=m=k=2$. We now assume $m,n\geq 3$ and thus there is at least one prime less than $m$ and $n$.
+
+If $k$ is greater than 1, $LCM(m^k,n^k)$ must be a perfect power for all positive integers $m, n$. We can prove that $m!+n!$ cannot be a perfect power, thus showing that $k=1$.
+Assume to the contrary that $m!+n!$ is a perfect power for some positive integers $m, n$, and $m!+n!=LCM(m^k,n^k)$
+Assume WLOG that $n\leq m$.
+Let $p$ be the greatest prime number that is less than $n$.
+$p$ divides $n!$ and thus divides $m!$ and thus divides $m!+n!=LCM(m^k,n^k)$. As $LCM(m^k,n^k)$ is a perfect power, it must also be divisible by $p^2$.
+$p^2$ does not divide n!, as that would mean that both $p$ and $2p$ are less than or equal to $n$, and due to Bertrand, there must be a prime between $p$ and $2p$, contradicting $p$'s maximality. Also, $p$ does not divide $n$, as that would imply $2p<=n$, which would also contradict $p$'s maximality.
+However, $p$ does divide $m^k n^k$, meaning it must divide $m$. As $p<n\leq m$, $m$ is not equal to $p$, so $2p\leq m$, implying $p^2$ divides $m!$, which of course implies that $m!+n!$ is not divisible by $p^2$, implying it is not a perfect power.
+Therefore $m!+n!$ cannot be a perfect power, thus $k=1$ and $m!+n!=LCM(m,n)$.
+However, $m!<m!+n!=LCM(m,n)\leq mn\leq m^2$ implying $m!<m^2$ implying  $m\leq 3$. We already checked $n=1$ and $n=2$, so we must only check $m=n=3$ which fails and we see the only solutions are $m=n=2$.
+\end{proof}
+
+\end{prbm}
+
+
+\begin{prbm}
+
+
+\begin{proof}[Solution]
+
+
+\end{proof}
+
+\end{prbm}
+
+
+\begin{prbm}
+ Prove that for any odd natural number $'n'$, the number $1^{2007}+2^{2007}+....+n^{2007}$ is not divisible by $n+2$.
+\begin{proof}[Solution]
+Notice that,
+$$
+\sum_{i=1}^n i^{2007}\equiv -(2^{2007}+3^{2007}+\cdots+(n+1)^{2007})\implies 1^{2007}+(n+1)^{2007}+2\sum_{i=2}^n i^{2007}\equiv 0 \pmod{n+2}.
+$$Since, $1^{2007}+(n+1)^{2007}\equiv 0 \pmod{2007}$, we arrive at,
+$$\sum_{i=2}^n i^{2007} \equiv 0 \pmod{n+2} \implies \sum_{i=1}^n i^{2007} \equiv 1 \pmod{n+2}.$$
+\end{proof}
+
+\end{prbm}
+
+
+
+\begin{prbm}
+Show that $gcd(a^m-1,a^n-1)=a^{gcd(m,n)}-1$ for all positive integers $a>1,m,n.$
+\begin{proof}
+Let $m = nq_1 + r_1$
+
+Hence,
+
+$$gcd( a^m -1 , a^n -1) = gcd ( a^{nq_1 + r_1} -1 , a^n -1) = gcd( a^{r_1} -1, a^n-1)$$
+Let $n = r_1q_2 + r_2$
+
+Hence,
+
+$$gcd( a^{r_1} -1 , a^ n -1) = gcd( a^{r_1} -1, a^{r_1q_2 + r_2} -1) = gcd( a^{r_1} -1 , a^{r_2} -1)$$
+Continuing this process we will eventually get, (by Euclidean algorithm)
+
+$$gcd(a^{m} -1, a^{n} -1) = gcd( a^{gcd(m,n)} -1 , a^0 -1) = a^{gcd(m,n)} -1$$
+\end{proof}
+
+\end{prbm}
+
+
+
+\begin{prbm}
+Evaluate the following sum:
+$$\dfrac{1}{1!+2!+3!}+\dfrac{1}{2!+3!+4!}+\dots + \dfrac{1}{2016!+2017!+2018!}$$
+\begin{proof}[Hint]
+$\frac{n+2}{n!+(n+1)!+(n+2)!}=\frac{1}{n!(n+2)}=\frac{1}{(n+1)!}-\frac{1}{(n+2)!}$ 
+
+\end{proof}
+
+\end{prbm}
+
+
+
+\begin{prbm}
+3. It is known that p is prime and a is positive integer. Knowing that
+$$p^p+1=2*p^a+a^p ,$$prove that there cannot be chosen m and n, such that $m^{2p+a-3}+n^2 \equiv p+a \pmod {2p}$.
+
+\begin{proof}[Solution]
+
+First observe that $a<p$, then $gcd(a,p)=1$.\\
+Taking $\pmod{p}$ on both side, we get,
+$$a^{p} \equiv 1 \pmod{p} \implies a^{p-1}.a \equiv 1 \pmod{p} \implies a=1$$Follows by Fermat's little theorem!
+$$a^{p-1} \equiv 1 {\pmod{p}}$$Then we have,
+$$p^p=2p \implies p=2 \implies m^2+n^2 \equiv 3 \pmod{4}$$Since, $m^2+n^2 \equiv 0,1,2 \pmod{4}$.\\
+Contradiction,so we can't choose such $m$ and $n$.
+\end{proof}
+
+\end{prbm}
+
+\begin{prbm}
+\textit{Philippines}The sequence ${a_0, a_1, a_2, ...}$ of real numbers satisfies the recursive relation $$n(n+1)a_{n+1}+(n-2)a_{n-1} = n(n-1)a_n$$for every positive integer $n$, where $a_0 = a_1 = 1$. Calculate the sum $$\frac{a_0}{a_1} + \frac{a_1}{a_2} + ... + \frac{a_{2008}}{a_{2009}}$$
+\begin{proof}[Solution]
+For $n=1$,we see that,
+$$1.2.a_2-a_0=0 \implies a_2=\frac{1}{2}=\frac{1}{2!}$$Now, suppose that,
+$$a_k=\frac{1}{k!} \forall k \in \mathbb{N}$$is valid for all numbers $\leq k$.
+Then we now put $n=k$, then,
+$$k(k+1)a_{k+1}+(k-2)\frac{1}{(k-1)!}=k(k-1).\frac{1}{k!}$$
+$$\implies k(k+1)a_{k+1}=\frac{1}{(k-1)!} \implies a_{k+1}=\frac{1}{(k+1)!}$$
+So, now we have,
+$$\sum_{i=0}^{2008} \frac{a_i}{a_{i+1}}=\sum_{i=1}^{2008} (i+1) =1005*2009=2019045$$
+And, we are done. 
+\end{proof}
+
+\end{prbm}
+
+\begin{prbm}
+\textit{India}For positive real numbers $a,b,c$ which of the following statements necessarily implies $a=b=c$: (I) $a(b^3+c^3)=b(c^3+a^3)=c(a^3+b^3)$, (II) $a(a^3+b^3)=b(b^3+c^3)=c(c^3+a^3)$ ? Justify your answer.
+\begin{proof}[Solution]
+For $(I)$:
+we see that,
+$$ab^3+ac^3=ca^3+cb^3 \implies b^3(a-c)=ca(a^2-c^2) \text{if} a\not =c, then b^3=ca^2+a^2c$$
+So, for $I$ the condition is not necessary.
+For $(II)$:
+Assume that $a=max(a,b,c)$, then we have,
+$$a^4+ab^3=b^4+bc^3>b^4+ab^3 \implies c^3>ab^3$$
+$$a^4+ab^3=2b^4>a^4+b^4 \implies b^4>a^4$$
+Contradiction, so we must have, $a=b=c$.
+\end{proof}
+
+\end{prbm}
+
+
+\begin{prbm}
+\textsc{(Moldova)}Find all natural numbers $x,y$ such that $$x^5=y^5+10y^2+20y+1.$$
+\begin{proof}[Solution]
+We squeeze $x^5$ between to two consecutive powers i.e.
+$$y^5<x^5 \leq (y+1)^5$$So, we have,
+$$x^5=(y+1)^5 \implies 15y=5y^4+10y^2 \implies (y-1)(y^2+3y-3)=0$$So, we have $y=1$ as the only solution which gives $\boxed{(x,y)=(2,1)}$.
+\end{proof}
+\end{prbm}
+
+\begin{prbm}
+\begin{proof}[Solution]
+
+\end{proof}
+\end{prbm}
+
+\begin{prbm}
+\begin{proof}[Solution]
+
+\end{proof}
+\end{prbm}
+
+
+
+\begin{prbm}
+\begin{proof}[Solution]
+
+\end{proof}
+\end{prbm}
+
+
+\begin{prbm}
+Find positive integer solutions to $p+1=2^n$ where p is a prime number.
+\begin{proof}[Solution]
+Let, us consider that $n$ is not a prime. So, $n=k.p$ where k is an integer and p is a prime.
+So we get,
+$2^{kp}-1=(2^p)^k-1$
+Now we factorize to expand the equation:
+$(2^p)^k-1=(2^p-1).(2^{p(k-1)}+2^{p(k-2)}........+2^p+1)$
+So we see that $2^n - 1$ is not a prime since it is the factor of $(2^p-1)$, and $2^{p(k-2)}........+2^p+1)$. So, by contradiction, it is proved that whenever $2^n - 1$ is a prime, then $n$ is also a prime.
+So, all solutions are prime numbers.
+\end{proof}
+
+\end{prbm}
+
+\begin{prbm}
+Find all positive integers $n$ such that $3^{n-1}+5^{n-1}$ divides $3^{n}+5^{n}$.
+\begin{proof}[Solution]
+We know that for $n=1$ the case is trivial.
+Now,we have,
+$$gcd(3^{n-1}+5^{n-1} ,3^{n}+5^{n})=2,3^{n-1}+5^{n-1}$$Now we generalize the term,
+$$(5*3^n+3*5^n).k=5.3^{n+1}+3.5^{n+1}$$then taking gcd,
+We want,
+$$gcd(5*3^{n}+3*5^{n} ,5*3^{n+1}+3*5^{n+1})=3^{n-1}+5^{n-1}$$so,
+$$(5*3^{n}+3*5^{n} ,5*3^{n+1}+3*5^{n+1})=(x,y)let$$We get,
+$(x-3y,y)=p$ such that $2| p $
+Which is absurd. So, the only possible solution is $n=1$.
+\end{proof}
+
+\end{prbm}
+
+\begin{prbm}
+Let $S(n)$ denotes the sum of the digits of number $n$. Prove that $\frac{S(n)}{S(3n)}$ is unbounded.
+\begin{proof}[Solution]
+If $n = \frac{10^k + 2}{3}$ then $S(n) = 3(k-1) + 4$ while $S(3n) = 3$. It is easy to see that $\frac{S(n)}{S(3n)}$ cannot be upper bounded by a constant by increasing $k$.
+\end{proof}
+
+\end{prbm}
+
+\begin{prbm}
+\begin{proof}[Solution]
+
+\end{proof}
+
+\end{prbm}
+
+\begin{prbm}
+Find all integer solution triple $(x,y,z)$ such that $x^2+y^2+z^2-2xyz=0.$
+\begin{proof}[Solution]
+Taking $(mod4)$ on both sides shows that $(x,y,z)$ are even.
+So, let, $x=2p,y=2q,z=2r$
+Then we get,
+$$4p^2+4q^2+4r^2-16pqr=0$$We again get that $p,q,r$ are even,
+So, from infinite descent we prove that the only solution is
+$$\boxed{x,y,z=0}$$And we are done!
+\end{proof}
+
+\end{prbm}
+
+
+\begin{prbm}
+Let $n$ and $k$ be two positive integers. Prove that there exist infinitely many perfect squares of the form $n \cdot 2^k - 7$.
+\begin{proof} [Solution(rafaaya)]
+Suppose that the congruence $x^2\equiv \alpha\pmod{2^k}$ has a solution. Then it is easily seen that $x^2\equiv (x+2^{k-1})^2\pmod{2^{k}}$ but $x^2\not\equiv (x+2^{k-1})^2\pmod{2^{k+1}}$, so both of $x^2\equiv \alpha\pmod{2^{k+1}}$ and $x^2\equiv \alpha+2^k\pmod{2^{k+1}}$ have solutions. Thus by the inductive implications above and $\pmod{8}$ we see that $x^2\equiv 2^k+7\pmod{2^{k+1}}$ always has a solution (and then infinitely many solutions), as claimed $\Box$
+\end{proof}
+\end{prbm}
+
+\section{Problems}
+\begin{enumerate}
+\item Let $a$ and $b$ be non-negative integers, and $p$ a prime. Show that:
+$${ \binom{pa}{pb} }\equiv {\binom{a}{b}} \pmod{p}$$
+\item Prove that for each positive integer $n$ there exist $n$ consecutive positive integers, none of which is integral power of prime.
+\item Find all positive integer solutions to $3^x+4^y=5^z$.
+\item Find all positive integers $n>1$ such that $\frac{2^n+1}{n^2}$ is an integer.
+\item Prove that if $n=3^{k-1}$, then $2^n\equiv -1\pmod{3^k}$.
+\item Prove that the equation $x^2-dy^2=-1$ has no solution in integers if $d\equiv 3{\pmod 4}$.
+\item Find all solutions for prime $p$ such that $5^p-4^p=13$.
+\item Prove that $n + \big[ (\sqrt{2} + 1)^n\big] $ is odd for all positive integers $n$.$\big[ x \big]$ denotes the greatest integer function.
+\item Let $a,b,c,d,e\in \textbf{Z}^+$ such that ${{a}^{4}}+{{b}^{4}}+{{c}^{4}}+{{d}^{4}}+{{e}^{4}}={{2009}^{2008}}$.Show that $abcde$ is divisible by ${{10}^{4}}$
+\item Find a,b,c in positive integer's such that $abc|(ab+1)(bc+1)(ca+1)$.
+\item Recall that e is given by the infinite sum 
+$$e = 1+\frac{1}{1!}+\frac{1}{2!}+\frac{1}{3!}+\cdots$$
+Show that $e$ is irrational.
+\item (IMO 1979, Day 1, Problem 1) If $p$ and $q$ are natural numbers so that \[ \frac{p}{q}=1-\frac{1}{2}+\frac{1}{3}-\frac{1}{4}+ \ldots -\frac{1}{1318}+\frac{1}{1319}, \] prove that $p$ is divisible with $1979$.
+\item (IMO 1980 Finland, Problem 3) Prove that the equation $$x^n+1=y^{n+1}$$
+where $n$ is a positive integer not smaller then $2$, has no positive integer solutions
+in x and y for which x and n + 1 are relatively prime.
+
+\item (IMO 1984, Day 1, Problem 2) Find one pair of positive integers $a,b$ such that $ab(a+b)$ is not divisible by $7$, but $(a+b)^7 −a^7 −b^7$  is divisible by $7^7$.
+
+\item (IMO 1986, Day 1, Problem 1) Let $d$ be any positive integer not equal to $2, 5$ or $13$. Show that one can find distinct a, b in the set $\{2, 5, 13, d\}$ such that $ab − 1$ is not a perfect square.
+
+\item (IMO 2006, Problem 4)Find all integers greater than $1$ that are relatively prime to $2^n+3^n+6^n-1.$
+
+\item (IMO 2017, Problem 1) For each integer $a_0 > 1$, define the sequence $a_0, a_1, a_2, \ldots$ for $n \geq 0$ as
+$$a_{n+1} = 
+\begin{cases}
+\sqrt{a_n} & \text{if } \sqrt{a_n} \text{ is an integer,} \\
+a_n + 3 & \text{otherwise.}
+\end{cases}
+$$Determine all values of $a_0$ such that there exists a number $A$ such that $a_n = A$ for infinitely many values of $n$.
+
+\item (IMO Shortlist 2017, N5) Find all pairs $(p,q)$ of prime numbers which $p>q$ and
+$$\frac{(p+q)^{p+q}(p-q)^{p-q}-1}{(p+q)^{p-q}(p-q)^{p+q}-1}$$is an integer.
+
+\item Prove that all factors of $2^{2^n}+1$ are of the form $k.2^{n+1}+1$.
+
+\item Find all primes $p$ and $q$ such that for every integer $n$, the number $n^{3pq}-n$ is divisible by $3pq.$
+
+
+\end{enumerate}
+
+
+
+
+
+
+
+\section{Selected Hints}
+\begin{enumerate}
+\item Use Lucas theorem.
+\begin{theorem}
+Let, $a$ and $b$ be non-negative integers,and $p$ a prime. Let,
+$$a=a_kp^k+a_{k-1}p^{k-1}+\cdots+a_1p+a_0$$
+$$b=b_kp^k+b_{k-1}p^{k-1}+\cdots+b_1p+b_0$$
+be the base $p$ representation of $a$ and $b$ respectively. Then,
+$${\binom{a}{b}} \equiv {\binom{a_k}{b_k}}{\binom{a_{k-1}}{b_{k-1}}}\cdots {\binom{a_1}{b_1}}{\binom{a_0}{b_0}} \pmod{p}$$
+\end{theorem}
+\item Apply Chinese Remainder Theorem.
+
+\item Use modular operation and then case bash.
+
+\item Assume that $3^k||n \implies 3^{2k}| n^2 |2^n+1$
+
+\item Use modular arithmetic.
+\item Theorem: If $p$ is a prime then the congruence $x^2+1\equiv 0 \pmod {p}$ has a solution iff $p=1$ or $p=2$.
+\item Use modular operation and then case bash.
+
+\item Some representation for $a_n$ and then modular bash.
+\item $\pmod{16}$ and $\pmod{5}$ and then use Chinese Remainder Theorem.
+\item Represent it as a fraction to get $\frac{1}{a}+....$.
+
+
+\end{enumerate}
+
+
+
+\backmatter
+
+
+\chapter{References}
+\begin{itemize}
+\item 
+\item
+\item 
+\item
+\item 
+\item
+\end{itemize}
+
+
+
+
+
+
+\end{document}
